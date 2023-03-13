@@ -28,7 +28,7 @@ SELECT * FROM dirty_data
   */
  
 
-/* change table names */
+/* change column names */
 ALTER TABLE `dirty_data` 
 CHANGE COLUMN `Segment` `order_id` TEXT NULL DEFAULT NULL, 
 CHANGE COLUMN `Consumer` `consumer_first_class` TEXT NULL DEFAULT NULL,
