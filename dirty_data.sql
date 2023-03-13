@@ -30,7 +30,7 @@ SELECT * FROM dirty_data
 
 /* change column names */
 ALTER TABLE `dirty_data` 
-CHANGE COLUMN `Segment` `order_id` TEXT NULL DEFAULT NULL, 
+CHANGE COLUMN `ï»¿Segment>>` `order_id` TEXT NULL DEFAULT NULL, 
 CHANGE COLUMN `Consumer` `consumer_first_class` TEXT NULL DEFAULT NULL,
 CHANGE COLUMN  `MyUnknownColumn` `consumer_same_day` TEXT NULL DEFAULT NULL,
 CHANGE COLUMN `MyUnknownColumn_[0]` `consumer_second_class` TEXT NULL DEFAULT NULL,
