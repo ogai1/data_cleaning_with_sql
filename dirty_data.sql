@@ -28,7 +28,7 @@ SELECT * FROM dirty_data
   */
  
 
-/* change column names */
+/* change field names */
 ALTER TABLE `dirty_data` 
 CHANGE COLUMN `ï»¿Segment>>` `order_id` TEXT NULL DEFAULT NULL, 
 CHANGE COLUMN `Consumer` `consumer_first_class` TEXT NULL DEFAULT NULL,
@@ -44,7 +44,7 @@ CHANGE COLUMN `MyUnknownColumn_[5]` `home_office_same_day` TEXT NULL DEFAULT NUL
 CHANGE COLUMN `MyUnknownColumn_[6]` `home_office_second_class` TEXT NULL DEFAULT NULL,
 CHANGE COLUMN `MyUnknownColumn_[7]` `home_office_standard_class` TEXT NULL DEFAULT NULL;
 
-/* drop irrelevant rows and columns */
+/* drop irrelevant records and fields */
 DELETE FROM dirty_data
 WHERE order_id IN ('Ship Mode>>', 'Order ID','Grand Total');
 
@@ -53,7 +53,7 @@ DROP COLUMN `Home Office Total`,
 DROP COLUMN `Corporate Total`,
 DROP COLUMN `Consumer Total`;
 
-/* Filter the columns */
+/* Filter the fields */
 SELECT order_id, consumer_first_class AS sales
  FROM dirty_data
 WHERE consumer_first_class <> '';
@@ -64,7 +64,7 @@ AS SELECT order_id, consumer_first_class AS sales
  FROM dirty_data
 WHERE consumer_first_class <> '';
 
-/* create columns for segment and shipmode */
+/* create fields for segment and shipmode */
 ALTER TABLE `portfolio_project`.`cleaned_data` 
 ADD COLUMN `ship_mode` VARCHAR(20) NULL AFTER `sales`,
 ADD COLUMN `segment` VARCHAR(20) NULL AFTER `ship_mode`;
@@ -97,7 +97,7 @@ WHERE ship_mode IS NULL ;
 UPDATE cleaned_data SET segment = 'consumer'
 WHERE segment IS NULL ;
 
-/* populate the columns segment with 'standard class' and ship mode with 'consumer'*/
+/* populate the field segment with 'standard class' and ship mode with 'consumer'*/
 INSERT INTO cleaned_data (order_id, sales)
 SELECT order_id, consumer_standard_class AS sales
 FROM dirty_data
@@ -109,7 +109,7 @@ WHERE ship_mode IS NULL ;
 UPDATE cleaned_data SET segment = 'consumer'
 WHERE segment IS NULL ;
 
-/* populate the columns segment with 'corporate' and ship mode with 'first class'*/
+/* populate the field segment with 'corporate' and ship mode with 'first class'*/
 INSERT INTO cleaned_data (order_id, sales)
 SELECT order_id, corporate_first_class AS sales
 FROM dirty_data
@@ -121,7 +121,7 @@ WHERE ship_mode IS NULL ;
 UPDATE cleaned_data SET segment = 'corporate'
 WHERE segment IS NULL ;
 
-/* populate the columns segment with 'corporate' and ship mode with 'same day'*/
+/* populate the field segment with 'corporate' and ship mode with 'same day'*/
 INSERT INTO cleaned_data (order_id, sales)
 SELECT order_id, corporate_same_day AS sales
 FROM dirty_data
@@ -133,7 +133,7 @@ WHERE ship_mode IS NULL ;
 UPDATE cleaned_data SET segment = 'corporate'
 WHERE segment IS NULL ;
 
-/* populate the columns segment with 'corporate' and ship mode with 'second class'*/
+/* populate the field segment with 'corporate' and ship mode with 'second class'*/
 INSERT INTO cleaned_data (order_id, sales)
 SELECT order_id, corporate_second_class AS sales
 FROM dirty_data
@@ -145,7 +145,7 @@ WHERE ship_mode IS NULL ;
 UPDATE cleaned_data SET segment = 'corporate'
 WHERE segment IS NULL ;
 
-/* populate the columns segment with 'corporate' and ship mode with 'standard class'*/
+/* populate the field segment with 'corporate' and ship mode with 'standard class'*/
 INSERT INTO cleaned_data (order_id, sales)
 SELECT order_id, corporate_standard_class AS sales
 FROM dirty_data
@@ -158,7 +158,7 @@ UPDATE cleaned_data SET segment = 'corporate'
 WHERE segment IS NULL ;
 
 
-/* populate the columns segment with 'home office' and ship mode with 'first class'*/
+/* populate the field segment with 'home office' and ship mode with 'first class'*/
 INSERT INTO cleaned_data (order_id, sales)
 SELECT order_id, home_office_first_class AS sales
 FROM dirty_data
@@ -170,7 +170,7 @@ WHERE ship_mode IS NULL ;
 UPDATE cleaned_data SET segment = 'home_office'
 WHERE segment IS NULL ;
 
-/* populate the columns segment with 'home office' and ship mode with 'same day'*/
+/* populate the field segment with 'home office' and ship mode with 'same day'*/
 INSERT INTO cleaned_data (order_id, sales)
 SELECT order_id, home_office_same_day AS sales
 FROM dirty_data
@@ -182,7 +182,7 @@ WHERE ship_mode IS NULL ;
 UPDATE cleaned_data SET segment = 'home_office'
 WHERE segment IS NULL ;
 
-/* populate the columns segment with 'home office' and ship mode with 'second class'*/
+/* populate the field segment with 'home office' and ship mode with 'second class'*/
 INSERT INTO cleaned_data (order_id, sales)
 SELECT order_id, home_office_second_class AS sales
 FROM dirty_data
@@ -194,7 +194,7 @@ WHERE ship_mode IS NULL ;
 UPDATE cleaned_data SET segment = 'home_office'
 WHERE segment IS NULL ;
 
-/* populate the columns segment with 'home office' and ship mode with 'standard class'*/
+/* populate the field segment with 'home office' and ship mode with 'standard class'*/
 INSERT INTO cleaned_data (order_id, sales)
 SELECT order_id, home_office_standard_class AS sales
 FROM dirty_data
