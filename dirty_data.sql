@@ -206,10 +206,13 @@ WHERE ship_mode IS NULL ;
 UPDATE cleaned_data SET segment = 'home_office'
 WHERE segment IS NULL ;
 
+/* inspect cleaned data */
+SELECT * from cleaned_data
+
 /* check data types */
 DESCRIBE cleaned_data;
 
-/* change to proper data types */
+/* change record to proper data types */
 ALTER TABLE `portfolio_project`.`cleaned_data` 
 CHANGE COLUMN `sales` `sales` FLOAT NULL DEFAULT NULL ;
 
