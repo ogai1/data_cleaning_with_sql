@@ -1,6 +1,6 @@
 /* create and populate the table */
 CREATE TABLE `dirty_data` (
-  `Segment` text,
+  `ï»¿Segment>>` text,
   `Consumer` text,
   `MyUnknownColumn` text,
   `MyUnknownColumn_[0]` text,
